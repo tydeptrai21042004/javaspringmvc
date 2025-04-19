@@ -1,0 +1,207 @@
+/* src/pages/LoginPage.css */
+
+/* --- Variable Definitions --- */
+:root {
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --error-color: #dc3545;
+  --light-bg-color: #f8f9fa; /* Page background */
+  --form-bg-color: #ffffff; /* Form background */
+  --dark-text-color: #343a40;
+  --light-text-color: #ffffff;
+  --border-color: #dee2e6;
+  --input-border-color: #ced4da;
+  --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --card-radius: 10px;
+  --input-focus-border: #80bdff;
+  --font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --transition-speed: 0.2s;
+}
+
+/* --- General Page Styles --- */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh; /* Adjust based on header/footer height */
+  background-color: var(--light-bg-color);
+  padding: 2rem 1rem;
+  font-family: var(--font-family-sans-serif);
+  box-sizing: border-box;
+}
+
+/* --- Login Form Container --- */
+.login-container {
+  width: 100%;
+  max-width: 420px; /* Slightly wider */
+  background: var(--form-bg-color);
+  padding: 2.5rem 3rem; /* More padding */
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  text-align: center; /* Center heading and intro text */
+}
+
+/* --- Optional Logo --- */
+.login-logo {
+    margin-bottom: 1.5rem;
+    /* Add styles for your logo image or text */
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* --- Login Form Styling --- */
+.login-form h2 {
+  margin-bottom: 0.75rem;
+  color: var(--dark-text-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.login-form .form-description {
+  margin-bottom: 2rem;
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+/* --- Form Group (Label + Input) --- */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  color: var(--dark-text-color);
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--input-border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-group input:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* --- Error Message Styling --- */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* --- Extra Options (Remember Me / Forgot Password) --- */
+.extra-options {
+    display: flex;
+    justify-content: space-between; /* Aligns items to ends */
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.extra-options .remember-me {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+.extra-options .remember-me input {
+    margin-right: 0.4rem;
+    width: auto; /* Override full width for checkbox */
+}
+
+.extra-options .forgot-password-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.extra-options .forgot-password-link:hover {
+    text-decoration: underline;
+     color: var(--primary-hover-color);
+}
+
+/* --- Submit Button Styling --- */
+.submit-button {
+  width: 100%;
+  padding: 0.9rem 1rem; /* Slightly taller button */
+  background: var(--primary-color);
+  color: var(--light-text-color);
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease, opacity var(--transition-speed) ease;
+  margin-top: 0.5rem; /* Space above button if extra options are removed */
+}
+
+.submit-button:hover:not(:disabled) {
+  background: var(--primary-hover-color);
+}
+
+.submit-button:disabled {
+  background-color: #a0cfff; /* Lighter blue when disabled */
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+/* --- Link to Register Page --- */
+.register-link {
+  margin-top: 2rem; /* More space above the link */
+  font-size: 0.95rem;
+  color: var(--secondary-color);
+}
+
+.register-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+  color: var(--primary-hover-color);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 2rem 1.5rem; /* Adjust padding */
+    max-width: 95%;
+  }
+
+  .login-form h2 {
+    font-size: 1.6rem;
+  }
+   .submit-button {
+       padding: 0.8rem 1rem;
+       font-size: 1rem;
+   }
+    .extra-options {
+        font-size: 0.85rem; /* Smaller text for options */
+         flex-direction: column; /* Stack options */
+         align-items: flex-start;
+         gap: 0.5rem;
+    }
+}

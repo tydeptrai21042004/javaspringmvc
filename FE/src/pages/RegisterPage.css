@@ -1,0 +1,188 @@
+/* src/pages/RegisterPage.css */
+
+/* Define some CSS variables for easier theme management */
+:root {
+  --primary-color: #007bff; /* Example primary color (blue) */
+  --primary-hover-color: #0056b3;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --light-bg-color: #f8f9fa;
+  --dark-text-color: #333;
+  --light-text-color: #fff;
+  --border-color: #ced4da;
+  --input-bg-color: #fff;
+  --input-focus-border-color: #80bdff;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+/* General page styling */
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+  background-color: var(--light-bg-color); /* Light gray background */
+  padding: 2rem 1rem; /* Add some padding for smaller screens */
+  box-sizing: border-box;
+}
+
+/* Container for the form */
+.register-container {
+  width: 100%;
+  max-width: 450px; /* Slightly wider form */
+  background: var(--input-bg-color);
+  padding: 2.5rem; /* More padding */
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center; /* Center heading and intro text */
+}
+
+/* Form itself */
+.register-form h2 {
+  margin-bottom: 0.5rem;
+  color: var(--dark-text-color);
+  font-size: 1.75rem; /* Larger heading */
+  font-weight: 600;
+}
+
+.register-form .form-description {
+  margin-bottom: 2rem; /* More space below intro text */
+  color: #6c757d; /* Softer text color */
+  font-size: 1rem;
+}
+
+/* Form group styling (label + input + error) */
+.form-group {
+  margin-bottom: 1.5rem; /* Increased spacing between fields */
+  text-align: left; /* Align labels and inputs left */
+}
+
+.form-group label {
+  display: block; /* Make label take full width */
+  margin-bottom: 0.5rem; /* Space between label and input */
+  font-weight: 600; /* Bolder labels */
+  color: var(--dark-text-color);
+  font-size: 0.9rem;
+}
+
+/* Input field styling */
+.form-group input {
+  width: 100%;
+  padding: 0.85rem 1rem; /* Comfortable padding */
+  border: 1px solid var(--border-color);
+  border-radius: 4px; /* Slightly rounded corners */
+  font-size: 1rem;
+  box-sizing: border-box; /* Include padding and border in width */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
+  background-color: var(--input-bg-color);
+}
+
+.form-group input:focus {
+  outline: none; /* Remove default outline */
+  border-color: var(--input-focus-border-color); /* Highlight color on focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle glow effect */
+}
+
+/* Input error state */
+.form-group input.input-error {
+  border-color: var(--error-color);
+}
+
+.form-group input.input-error:focus {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); /* Red glow for error focus */
+}
+
+/* Error text styling */
+.error-text {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  margin-top: 0.4rem; /* Space above error message */
+}
+
+/* Password hint styling */
+.password-hint {
+    display: block;
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 0.4rem;
+}
+
+/* General Message / Notification Area */
+.message {
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.message.error-message {
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+  border-color: #f5c6cb;
+}
+
+.message.info-message { /* For success or general info */
+  background-color: #d4edda; /* Light green background */
+  color: #155724; /* Dark green text */
+  border-color: #c3e6cb;
+}
+
+
+/* Submit Button Styling */
+.submit-button {
+  width: 100%;
+  padding: 0.85rem 1rem; /* Consistent padding with inputs */
+  background: var(--primary-color);
+  color: var(--light-text-color);
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  margin-top: 0.5rem; /* Space above button */
+}
+
+.submit-button:hover:not(:disabled) {
+  background: var(--primary-hover-color);
+}
+
+.submit-button:disabled {
+  background-color: #a0cfff; /* Lighter blue when disabled */
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+/* Login Link Styling */
+.login-link {
+  margin-top: 1.5rem; /* Space above the link */
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+.login-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+  color: var(--primary-hover-color);
+}
+
+/* Responsive adjustments (optional, but good practice) */
+@media (max-width: 480px) {
+  .register-container {
+    padding: 1.5rem; /* Less padding on small screens */
+  }
+
+  .register-form h2 {
+    font-size: 1.5rem;
+  }
+}

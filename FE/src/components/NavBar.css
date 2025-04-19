@@ -1,0 +1,268 @@
+/* src/components/NavBar.css */
+
+/* --- Variable Definitions (reuse from global styles or define here) --- */
+:root {
+    --nav-height: 65px; /* Adjust as needed */
+    --nav-bg-color: #ffffff;
+    --nav-text-color: #343a40;
+    --nav-link-hover-bg: #f8f9fa;
+    --nav-link-active-color: #007bff; /* Primary color for active link */
+    --nav-border-color: #dee2e6;
+    --nav-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --nav-brand-color: var(--nav-text-color);
+    --nav-button-bg: transparent;
+    --nav-button-text: #dc3545; /* Danger color for logout */
+    --nav-button-hover-bg: #f8d7da;
+    --nav-register-bg: #28a745; /* Example success color */
+    --nav-register-hover-bg: #218838;
+    --nav-mobile-breakpoint: 768px; /* When the menu collapses */
+    --transition-speed: 0.3s;
+  }
+  
+  /* --- Navbar Base --- */
+  .navbar {
+    background-color: var(--nav-bg-color);
+    height: var(--nav-height);
+    padding: 0 1.5rem; /* Horizontal padding */
+    box-shadow: var(--nav-shadow);
+    border-bottom: 1px solid var(--nav-border-color);
+    position: sticky; /* Make navbar stick to top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it's above other content */
+    box-sizing: border-box;
+  }
+  
+  /* --- Centered Container --- */
+  .nav-container {
+    max-width: 1200px; /* Adjust max width as needed */
+    height: 100%;
+    margin: 0 auto; /* Center content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* For mobile menu positioning */
+  }
+  
+  /* --- Brand/Logo --- */
+  .nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--nav-brand-color);
+    text-decoration: none;
+    padding: 0.5rem 0; /* Add padding for click area */
+  }
+  /* Optional: Logo image styling */
+  /* .nav-brand img { height: 35px; vertical-align: middle; } */
+  
+  /* --- Navigation Links --- */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Spacing between links - adjust as needed */
+  }
+  
+  .nav-link {
+    padding: 0.6rem 0.9rem;
+    color: var(--nav-text-color);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    white-space: nowrap; /* Prevent links wrapping */
+  }
+  
+  .nav-link:hover {
+    background-color: var(--nav-link-hover-bg);
+    color: #000;
+  }
+  
+  /* Active Link Styling */
+  .nav-link.active {
+    color: var(--nav-link-active-color);
+    font-weight: 700;
+    /* Optional: Add subtle background or border */
+    /* background-color: #e7f3ff; */
+  }
+  
+  /* --- Auth Links/Button Section --- */
+  .nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Spacing within auth section */
+    margin-left: 1rem; /* Space between main links and auth */
+  }
+  
+  .nav-username {
+      color: var(--secondary-color, #6c757d);
+      font-size: 0.9rem;
+      margin-right: 0.8rem;
+      white-space: nowrap;
+  }
+  
+  .nav-button { /* General style for buttons in nav */
+    background-color: var(--nav-button-bg);
+    border: 1px solid transparent;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  }
+  
+  .logout-button {
+    color: var(--nav-button-text);
+    border-color: var(--nav-button-text);
+  }
+  .logout-button:hover {
+    background-color: var(--nav-button-hover-bg);
+     color: #721c24;
+  }
+  
+  .auth-link { /* Style Login/Register links differently if desired */
+     font-weight: 600;
+  }
+  .register-link { /* Special style for register */
+     background-color: var(--nav-register-bg);
+     color: var(--nav-text-light) !important; /* Override nav-link color */
+     padding: 0.5rem 1rem; /* Match button padding */
+     border-radius: 50px; /* Pill shape */
+  }
+  .register-link:hover {
+      background-color: var(--nav-register-hover-bg);
+       color: var(--nav-text-light) !important;
+  }
+  
+  
+  /* --- Mobile Menu --- */
+  .mobile-menu-toggle {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1010; /* Above nav links */
+  }
+  
+  .hamburger-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--nav-text-color);
+    border-radius: 1px;
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  /* Basic animation for hamburger to X (optional) */
+  .mobile-menu-toggle[aria-expanded="true"] .hamburger-icon:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .mobile-menu-toggle[aria-expanded="true"] .hamburger-icon:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-menu-toggle[aria-expanded="true"] .hamburger-icon:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  
+  /* --- Responsive Styles --- */
+  @media (max-width: 992px) { /* Adjust breakpoint slightly larger if many links */
+    .nav-links {
+      gap: 0.2rem; /* Reduce gap */
+    }
+    .nav-link {
+       padding: 0.6rem 0.7rem; /* Reduce padding */
+       font-size: 0.95rem;
+    }
+     .nav-auth {
+         margin-left: 0.5rem;
+     }
+  }
+  
+  
+  @media (max-width: var(--nav-mobile-breakpoint)) {
+    .mobile-menu-toggle {
+      display: block; /* Show hamburger */
+    }
+  
+    .nav-links {
+      /* Mobile Menu Appearance */
+      display: flex;
+      flex-direction: column; /* Stack links vertically */
+      align-items: flex-start; /* Align links left */
+      position: absolute;
+      top: var(--nav-height); /* Position below navbar */
+      left: 0;
+      width: 100%;
+      background-color: var(--nav-bg-color);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-top: 1px solid var(--nav-border-color);
+  
+      /* Hide/Show Logic */
+      max-height: 0; /* Collapsed by default */
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease-out, opacity 0.3s ease-out, padding 0.4s ease-out;
+      padding: 0 1.5rem; /* Remove padding when closed */
+      gap: 0; /* Reset gap */
+    }
+  
+    .nav-links.open {
+      max-height: calc(100vh - var(--nav-height)); /* Allow scrolling */
+      opacity: 1;
+      padding: 1rem 1.5rem; /* Add padding when open */
+      overflow-y: auto; /* Enable scroll if content overflows */
+    }
+  
+    .nav-link {
+      width: 100%; /* Make links take full width */
+      padding: 0.9rem 0; /* Vertical padding for mobile */
+      border-bottom: 1px solid var(--nav-border-color); /* Separator lines */
+      border-radius: 0; /* Remove radius */
+      text-align: left;
+    }
+     .nav-link:last-child {
+        border-bottom: none; /* Remove border on last link */
+    }
+     .nav-link:hover {
+         background-color: var(--nav-link-hover-bg);
+     }
+     .nav-link.active {
+        /* Optionally different active style for mobile */
+        background-color: transparent;
+        font-weight: 700;
+     }
+  
+  
+    .nav-auth {
+      /* Adjust auth section for vertical layout */
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch; /* Make items stretch full width */
+      margin-left: 0;
+      margin-top: 1rem; /* Space above auth section */
+      gap: 0.8rem; /* Space between auth items */
+      padding-top: 1rem;
+      border-top: 1px solid var(--nav-border-color);
+    }
+  
+     .nav-username {
+         text-align: center;
+         margin-bottom: 0.5rem;
+         margin-right: 0;
+     }
+  
+    .nav-button,
+    .auth-link {
+      width: 100%; /* Make buttons/links full width */
+      text-align: center; /* Center text */
+      padding: 0.8rem 1rem;
+    }
+     .register-link {
+         background-color: var(--nav-register-bg); /* Ensure background is kept */
+         color: var(--nav-text-light) !important;
+     }
+  }

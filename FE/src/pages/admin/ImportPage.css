@@ -1,0 +1,213 @@
+/* src/pages/admin/ImportPage.css */
+
+/* --- Variable Definitions (reuse from other admin pages or define specific admin theme) --- */
+:root {
+  --admin-primary-color: #3498db;
+  --admin-primary-hover: #2980b9;
+  --admin-secondary-color: #95a5a6;
+  --admin-success-color: #2ecc71;
+  --admin-error-color: #e74c3c;
+  --admin-info-color: #3498db; /* Color for 'processing' message */
+  --admin-bg-light: #ecf0f1; /* Page background */
+  --admin-bg-panel: #ffffff; /* Panel background */
+  --admin-text-dark: #2c3e50;
+  --admin-text-light: #ffffff;
+  --admin-border-color: #bdc3c7;
+  --admin-shadow: 0 2px 5px rgba(44, 62, 80, 0.1);
+  --admin-radius: 6px;
+  --admin-font: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --transition-speed: 0.2s;
+}
+
+/* --- General Page Styles --- */
+.import-page {
+  padding: 2rem;
+  font-family: var(--admin-font);
+  background-color: var(--admin-bg-light);
+  color: var(--admin-text-dark);
+  min-height: 80vh; /* Ensure it takes up reasonable height */
+  display: flex; /* Center the panel */
+  justify-content: center;
+  align-items: flex-start; /* Align panel top */
+}
+
+/* --- Import Panel Styling --- */
+.import-panel {
+  background-color: var(--admin-bg-panel);
+  border-radius: var(--admin-radius);
+  box-shadow: var(--admin-shadow);
+  padding: 2rem 2.5rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 700px; /* Max width for the panel */
+  text-align: center; /* Center content within the panel */
+}
+
+.import-panel h2 {
+  font-size: 1.6rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--admin-text-dark);
+}
+
+.import-instructions {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  text-align: left; /* Align instructions left */
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--admin-border-color);
+}
+
+/* --- Feedback Message Styling --- */
+.feedback-message {
+  padding: 0.9rem 1.2rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  border: 1px solid transparent;
+}
+.feedback-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+.feedback-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+.feedback-message.info { /* Styling for 'processing' message */
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-color: #bee5eb;
+}
+
+
+/* --- Custom File Input Styling --- */
+.file-upload-area {
+  margin-top: 1.5rem;
+}
+
+/* Hide the actual file input visually but keep it accessible */
+.file-input-hidden {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+/* Style the label to look like the interactive element */
+.file-upload-label {
+  display: inline-block; /* Or block if full width */
+  padding: 1.5rem 2rem; /* Larger padding for better click/drop area */
+  border: 2px dashed var(--admin-border-color);
+  border-radius: var(--admin-radius);
+  background-color: #fdfdfe;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--admin-primary-color);
+  transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+  text-align: center;
+  width: 100%; /* Make label take full width */
+  box-sizing: border-box;
+}
+
+.file-upload-label:hover,
+.file-upload-label:focus-within { /* Style when input inside is focused */
+  border-color: var(--admin-primary-color);
+  background-color: #eef8ff; /* Light blue background on hover/focus */
+}
+
+.file-upload-label.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: #e9ecef;
+    border-color: var(--admin-border-color);
+    color: var(--admin-secondary-color);
+}
+.file-upload-label.disabled:hover {
+     background-color: #e9ecef; /* Prevent hover color change when disabled */
+     border-color: var(--admin-border-color);
+}
+
+
+/* Style the icon inside the label */
+.upload-icon {
+  display: block; /* Place icon on its own line */
+  margin: 0 auto 0.8rem auto; /* Center icon and add space below */
+  width: 40px;
+  height: 40px;
+  color: var(--admin-primary-color);
+  opacity: 0.8;
+}
+.file-upload-label.disabled .upload-icon {
+     color: var(--admin-secondary-color);
+}
+
+
+/* --- Optional: Separate Selected File Name Display --- */
+.selected-file-name {
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--admin-secondary-color);
+  font-size: 0.9rem;
+}
+
+/* --- Optional: Separate Loading Indicator --- */
+.loading-indicator {
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--admin-secondary-color);
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .import-page {
+    padding: 1.5rem;
+  }
+  .import-panel {
+    padding: 1.5rem;
+    margin-top: 1rem;
+  }
+  .import-panel h2 {
+    font-size: 1.4rem;
+  }
+  .file-upload-label {
+     padding: 1.2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .import-page {
+    padding: 1rem;
+  }
+  .import-panel {
+    padding: 1rem;
+  }
+   .import-instructions {
+       font-size: 0.9rem;
+       padding: 0.8rem;
+   }
+   .file-upload-label {
+     padding: 1rem;
+     font-size: 0.95rem;
+  }
+   .upload-icon {
+       width: 30px;
+       height: 30px;
+   }
+   .feedback-message {
+       font-size: 0.9rem;
+       padding: 0.8rem 1rem;
+   }
+}

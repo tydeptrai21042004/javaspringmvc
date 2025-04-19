@@ -1,0 +1,277 @@
+/* src/pages/PaymentPage.css */
+
+/* --- Variable Definitions --- */
+:root {
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --light-bg-color: #f8f9fa; /* Page background */
+  --form-bg-color: #ffffff; /* Form section background */
+  --dark-text-color: #343a40;
+  --light-text-color: #ffffff;
+  --border-color: #dee2e6;
+  --input-border-color: #ced4da;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --card-radius: 8px;
+  --input-focus-border: #80bdff;
+  --input-error-border: var(--error-color);
+  --font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --transition-speed: 0.2s;
+}
+
+/* --- General Page Styles --- */
+.payment-page {
+  max-width: 800px; /* Allow slightly wider content */
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: var(--font-family-sans-serif);
+  background-color: var(--form-bg-color); /* White background for the main container */
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.payment-page h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  color: var(--dark-text-color);
+  font-weight: 600;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Space between form sections */
+}
+
+/* --- Form Section Styling --- */
+.form-section {
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  background-color: #fdfdfe; /* Slightly off-white for sections */
+}
+
+.form-section h3,
+.form-section h4 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  color: var(--dark-text-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+.form-section h4 { /* Sub-heading like "Enter Card Details" */
+    font-size: 1.15rem;
+    border-bottom: none;
+    margin-bottom: 1rem;
+}
+
+
+/* --- Form Grid Layout --- */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 1rem 1.5rem; /* Row and column gap */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1; /* Make item span all columns */
+}
+
+/* --- Form Elements (Labels, Inputs) --- */
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--dark-text-color);
+  font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"], /* Add other types as needed */
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--input-border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* --- Input Error Styling --- */
+.form-group input.input-error {
+  border-color: var(--input-error-border);
+}
+.form-group input.input-error:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); /* Red glow */
+}
+.error-text {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+.error-message.general-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 1rem;
+    border-radius: var(--card-radius);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+
+/* --- Payment Method Radio Buttons --- */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+    background-color: var(--form-bg-color);
+}
+
+.radio-label:hover {
+    border-color: var(--secondary-color);
+}
+
+.radio-label input[type="radio"] {
+    margin-right: 0.8rem;
+    accent-color: var(--primary-color); /* Modern way to style radio */
+     width: 1.1em;
+    height: 1.1em;
+}
+
+.radio-label span {
+    font-weight: 500;
+}
+
+.radio-label.selected {
+    border-color: var(--primary-color);
+    background-color: #e7f3ff; /* Light blue background */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.1);
+}
+
+/* --- Card Form Specific Grid --- */
+.card-grid {
+    /* Can adjust columns specifically for card expiry/cvv if needed */
+}
+
+/* --- Order Summary Section --- */
+.order-summary-section {
+    background-color: #f0f8ff; /* Light blue background for summary */
+    border-color: #cce5ff;
+}
+.order-summary-section h3 {
+    border-color: #cce5ff;
+}
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #cce5ff;
+}
+.order-total strong {
+    font-weight: 600;
+}
+.order-total span {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* --- Submit Button --- */
+.submit-order-btn {
+  background-color: var(--success-color);
+  color: var(--light-text-color);
+  border: none;
+  padding: 0.9rem 2rem; /* Larger button */
+  border-radius: 6px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+  width: 100%; /* Full width */
+  margin-top: 1rem; /* Space above button */
+}
+
+.submit-order-btn:hover:not(:disabled) {
+  background-color: #218838; /* Darker green */
+  transform: translateY(-2px);
+}
+
+.submit-order-btn:disabled {
+  background-color: #8fd19e;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .payment-page {
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+  }
+  .form-grid {
+       /* Adjust grid for smaller screens if needed, auto-fit might be sufficient */
+  }
+   .payment-page h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+   }
+   .form-section {
+       padding: 1.2rem;
+   }
+    .submit-order-btn {
+        font-size: 1.1rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+   .payment-page {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+   .form-grid {
+    grid-template-columns: 1fr; /* Stack all grid items */
+    gap: 1rem 0; /* Only row gap */
+  }
+  .form-section h3, .form-section h4 {
+      font-size: 1.2rem;
+  }
+   .order-total {
+       font-size: 1.1rem;
+   }
+}

@@ -1,0 +1,274 @@
+/* src/pages/admin/AdminProductPage.css */
+
+/* Define or reuse color palette and spacing units */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  --light-bg: #f8f9fa;
+  --white-bg: #ffffff;
+  --dark-text: #212529;
+  --medium-text: #495057;
+  --light-text: #6c757d;
+  --border-color: #dee2e6;
+  --input-border-color: #ced4da;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  --border-radius: 0.375rem; /* ~6px */
+  --spacing-unit: 1rem;
+  --primary-focus-shadow: rgba(0, 123, 255, 0.35);
+  --success-focus-shadow: rgba(40, 167, 69, 0.35);
+  --danger-focus-shadow: rgba(220, 53, 69, 0.35);
+}
+
+/* Page Container */
+.admin-product-page {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  max-width: 800px; /* Allow more width for forms */
+  margin: calc(var(--spacing-unit) * 2) auto;
+  padding: calc(var(--spacing-unit) * 2); /* More padding */
+  background-color: var(--white-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+/* Page Heading */
+.admin-product-page h2 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--dark-text);
+  margin: 0 0 calc(var(--spacing-unit) * 1.5) 0;
+  padding-bottom: var(--spacing-unit);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Message Area Styling (Generic) */
+.message {
+  padding: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  font-weight: 500;
+  /* Default/Info styling - requires JS to add specific classes */
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+/* Example classes (add these conditionally in your React component based on outcome) */
+.message-success {
+  color: #155724; /* Success text */
+  background-color: #d4edda; /* Success background */
+  border-color: #c3e6cb; /* Success border */
+}
+
+.message-error {
+  color: #721c24; /* Danger text */
+  background-color: #f8d7da; /* Danger background */
+  border-color: #f5c6cb; /* Danger border */
+}
+
+/* Form Styling */
+.admin-product-form {
+  /* Grid could be used for more complex layouts, but simple flow works */
+}
+
+/* Form Labels */
+.admin-product-form label {
+  display: block; /* Keep this */
+  margin-bottom: calc(var(--spacing-unit) * 1.25); /* Increased spacing */
+  font-weight: 500; /* Slightly bolder labels */
+  color: var(--medium-text);
+  font-size: 0.9rem;
+}
+
+/* Common styles for input, select, textarea */
+.admin-product-form select,
+.admin-product-form input[type="text"],
+.admin-product-form input[type="number"],
+.admin-product-form textarea {
+  display: block; /* Ensure block display */
+  width: 100%; /* Keep this */
+  padding: 0.75rem 1rem; /* Increased padding */
+  margin-top: calc(var(--spacing-unit) / 3); /* Consistent small gap */
+  box-sizing: border-box; /* Keep this */
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--dark-text);
+  background-color: var(--white-bg);
+  background-clip: padding-box;
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--border-radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Style focus state for these elements */
+.admin-product-form select:focus,
+.admin-product-form input[type="text"]:focus,
+.admin-product-form input[type="number"]:focus,
+.admin-product-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-focus-shadow);
+}
+
+/* Style placeholder text */
+.admin-product-form input::placeholder,
+.admin-product-form textarea::placeholder {
+  color: var(--light-text);
+  opacity: 0.8;
+}
+
+/* Select Specific Styling */
+.admin-product-form select {
+  appearance: none; /* Remove default OS styling */
+  /* Add custom arrow */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22%23495057%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em; /* Adjust size as needed */
+  padding-right: 2.5rem; /* Make space for the arrow */
+}
+
+/* Textarea Specific Styling */
+.admin-product-form textarea {
+  min-height: 120px; /* Provide ample space */
+  resize: vertical; /* Allow user to resize vertically */
+}
+
+/* File Input Styling */
+.admin-product-form input[type="file"] {
+  display: block;
+  width: 100%;
+  margin-top: calc(var(--spacing-unit) / 3);
+  padding: 0.5rem 0.75rem; /* Specific padding */
+  font-size: 0.9rem;
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--light-bg);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-product-form input[type="file"]:focus {
+   outline: none;
+   border-color: var(--primary-color);
+   box-shadow: 0 0 0 3px var(--primary-focus-shadow);
+}
+
+/* Style the button part of the file input */
+.admin-product-form input[type="file"]::file-selector-button {
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  margin: -0.5rem -0.75rem; /* Adjust to align with padding */
+  margin-right: 1rem;
+  border-radius: 0; /* Square corners on the left */
+  border-top-left-radius: var(--border-radius); /* Match container radius */
+  border-bottom-left-radius: var(--border-radius);
+  border: none;
+  border-right: 1px solid var(--input-border-color); /* Separator line */
+  background-color: var(--white-bg);
+  color: var(--medium-text);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.admin-product-form input[type="file"]::file-selector-button:hover {
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+}
+
+/* Image Preview Styling */
+.image-previews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-unit); /* Space between images */
+  margin-top: calc(var(--spacing-unit) * 0.75);
+  margin-bottom: calc(var(--spacing-unit) * 1.5); /* Space after previews */
+  padding: var(--spacing-unit);
+  background-color: var(--light-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.preview-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* Scale image nicely */
+  border-radius: calc(var(--border-radius) * 0.8);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Submit Button */
+.admin-product-form button[type="submit"] {
+  display: block; /* Block level */
+  width: 100%; /* Full width */
+  padding: 0.8rem 1.5rem; /* Generous padding */
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  background-color: var(--success-color); /* Green for Add/Success */
+  color: var(--white-bg);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  margin-top: calc(var(--spacing-unit) * 1.5); /* Space above button */
+}
+
+.admin-product-form button[type="submit"]:hover {
+  background-color: #218838; /* Darker green */
+}
+
+.admin-product-form button[type="submit"]:active {
+  background-color: #1e7e34;
+  transform: translateY(1px); /* Press effect */
+}
+
+.admin-product-form button[type="submit"]:focus {
+  outline: none;
+}
+
+.admin-product-form button[type="submit"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--success-focus-shadow); /* Focus ring */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+  .admin-product-page {
+    padding: var(--spacing-unit);
+    margin: var(--spacing-unit);
+  }
+
+  .admin-product-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .admin-product-form select,
+  .admin-product-form input[type="text"],
+  .admin-product-form input[type="number"],
+  .admin-product-form textarea {
+    padding: 0.6rem 0.8rem; /* Slightly smaller padding */
+  }
+
+  .admin-product-form button[type="submit"] {
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+  }
+
+  /* Center preview images if they wrap */
+  .image-previews {
+    justify-content: center;
+  }
+
+  .preview-img {
+    width: 80px;
+    height: 80px;
+  }
+}

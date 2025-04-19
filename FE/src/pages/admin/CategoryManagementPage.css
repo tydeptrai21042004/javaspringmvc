@@ -1,0 +1,208 @@
+/* src/pages/admin/CategoryManagementPage.css */
+
+/* Define or reuse color palette and spacing units */
+:root {
+  --primary-color: #007bff;
+  --danger-color: #dc3545;
+  --light-bg: #f8f9fa;
+  --white-bg: #ffffff;
+  --dark-text: #212529;
+  --medium-text: #495057;
+  --light-text: #6c757d;
+  --border-color: #dee2e6;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  --border-radius: 0.375rem; /* ~6px */
+  --spacing-unit: 1rem;
+  --primary-focus-shadow: rgba(0, 123, 255, 0.35);
+  --danger-focus-shadow: rgba(220, 53, 69, 0.35);
+}
+
+/* Main container for the page */
+.category-management {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  max-width: 700px; /* Limit width for better readability */
+  margin: calc(var(--spacing-unit) * 2) auto; /* Center the container */
+  padding: calc(var(--spacing-unit) * 1.5);
+  background-color: var(--white-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+/* Page Heading */
+.category-management h2 {
+  font-size: 1.6rem; /* Appropriate size for section title */
+  font-weight: 600;
+  color: var(--dark-text);
+  margin: 0 0 calc(var(--spacing-unit) * 1.5) 0; /* Reset top/left/right margin */
+  padding-bottom: var(--spacing-unit);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Add Category Form */
+.category-management form {
+  display: flex; /* Align input and button horizontally */
+  gap: calc(var(--spacing-unit) * 0.75); /* Space between input and button */
+  margin-bottom: calc(var(--spacing-unit) * 2); /* Space below form */
+  align-items: center; /* Vertically align items */
+}
+
+/* Input Field */
+.category-management input {
+  flex-grow: 1; /* Allow input to take up available space */
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--dark-text);
+  background-color: var(--white-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-management input::placeholder {
+  color: var(--light-text);
+  opacity: 0.8;
+}
+
+.category-management input:focus {
+  outline: none;
+  border-color: var(--primary-color); /* Highlight border on focus */
+  box-shadow: 0 0 0 3px var(--primary-focus-shadow); /* Add focus ring */
+}
+
+/* Category List */
+.category-management ul {
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--border-color); /* Add border around the list */
+  border-radius: var(--border-radius);
+  overflow: hidden; /* Ensure contained border radius */
+}
+
+/* Individual Category Item */
+.category-management li {
+  display: flex;
+  justify-content: space-between; /* Push name and button apart */
+  align-items: center; /* Vertically center content */
+  padding: calc(var(--spacing-unit) * 0.8) var(--spacing-unit);
+  border-bottom: 1px solid var(--border-color); /* Separator line */
+  color: var(--medium-text);
+  font-size: 1rem;
+  transition: background-color 0.15s ease; /* Subtle hover transition */
+}
+
+/* Remove border from the last item */
+.category-management li:last-child {
+  border-bottom: none;
+}
+
+/* Optional: Hover effect for list items */
+.category-management li:hover {
+  background-color: var(--light-bg);
+}
+
+/* Category Name (Implicitly the text node) - Give space to button */
+.category-management li {
+  /* Text node will naturally fill space; button has fixed size */
+}
+.category-management li > span { /* If you wrap the name in a span */
+    margin-right: var(--spacing-unit); /* Add space if needed */
+    word-break: break-word; /* Allow long names to wrap */
+}
+
+
+/* --- Button Styling --- */
+
+/* Base styles for all buttons on this page */
+.category-management button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  line-height: 1.5; /* Helps consistent height */
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.category-management button:focus {
+  outline: none;
+}
+.category-management button:focus-visible {
+  outline: none;
+  /* Focus shadow defined per button type below */
+}
+.category-management button:active {
+  transform: translateY(1px); /* Press effect */
+}
+
+/* "Thêm" (Add) Button */
+.category-management form button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--white-bg);
+}
+
+.category-management form button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker primary */
+}
+
+.category-management form button[type="submit"]:active {
+  background-color: #004085;
+}
+
+.category-management form button[type="submit"]:focus-visible {
+  box-shadow: 0 0 0 3px var(--primary-focus-shadow);
+}
+
+/* "Xóa" (Delete) Button */
+.category-management li button {
+  background-color: var(--danger-color);
+  color: var(--white-bg);
+  padding: 0.4rem 0.8rem; /* Make delete button slightly smaller */
+  font-size: 0.8rem;
+}
+
+.category-management li button:hover {
+  background-color: #c82333; /* Darker danger */
+}
+
+.category-management li button:active {
+  background-color: #bd2130;
+}
+
+.category-management li button:focus-visible {
+  box-shadow: 0 0 0 3px var(--danger-focus-shadow);
+}
+
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 500px) {
+  .category-management {
+    padding: var(--spacing-unit);
+    margin: var(--spacing-unit);
+  }
+
+  /* Stack form elements vertically */
+  .category-management form {
+    flex-direction: column;
+    align-items: stretch; /* Make input/button full width */
+  }
+
+  .category-management input {
+    margin-bottom: calc(var(--spacing-unit) * 0.75); /* Space between input/button when stacked */
+  }
+
+  .category-management h2 {
+    font-size: 1.4rem;
+  }
+
+  .category-management li {
+    padding: calc(var(--spacing-unit) * 0.6) calc(var(--spacing-unit) * 0.8); /* Slightly less padding */
+    font-size: 0.95rem;
+  }
+}

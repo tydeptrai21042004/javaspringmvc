@@ -1,0 +1,208 @@
+/* src/pages/admin/BrandManagementPage.css */
+
+/* Define or reuse color palette and spacing units */
+:root {
+  --primary-color: #007bff;
+  --danger-color: #dc3545;
+  --light-bg: #f8f9fa;
+  --white-bg: #ffffff;
+  --dark-text: #212529;
+  --medium-text: #495057;
+  --light-text: #6c757d;
+  --border-color: #dee2e6;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  --border-radius: 0.375rem; /* ~6px */
+  --spacing-unit: 1rem;
+  --primary-focus-shadow: rgba(0, 123, 255, 0.35);
+  --danger-focus-shadow: rgba(220, 53, 69, 0.35);
+}
+
+/* Main container for the page */
+.brand-management { /* Corrected selector */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  max-width: 700px; /* Limit width for better readability */
+  margin: calc(var(--spacing-unit) * 2) auto; /* Center the container */
+  padding: calc(var(--spacing-unit) * 1.5);
+  background-color: var(--white-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+/* Page Heading */
+.brand-management h2 { /* Corrected selector */
+  font-size: 1.6rem; /* Appropriate size for section title */
+  font-weight: 600;
+  color: var(--dark-text);
+  margin: 0 0 calc(var(--spacing-unit) * 1.5) 0; /* Reset top/left/right margin */
+  padding-bottom: var(--spacing-unit);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Add Brand Form */
+.brand-management form { /* Corrected selector */
+  display: flex; /* Align input and button horizontally */
+  gap: calc(var(--spacing-unit) * 0.75); /* Space between input and button */
+  margin-bottom: calc(var(--spacing-unit) * 2); /* Space below form */
+  align-items: center; /* Vertically align items */
+}
+
+/* Input Field */
+.brand-management input { /* Corrected selector */
+  flex-grow: 1; /* Allow input to take up available space */
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--dark-text);
+  background-color: var(--white-bg);
+  border: 1px solid var(--border-color); /* Use consistent border color */
+  border-radius: var(--border-radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-management input::placeholder { /* Style placeholder */
+  color: var(--light-text);
+  opacity: 0.8;
+}
+
+.brand-management input:focus { /* Corrected selector */
+  outline: none;
+  border-color: var(--primary-color); /* Highlight border on focus */
+  box-shadow: 0 0 0 3px var(--primary-focus-shadow); /* Add focus ring */
+}
+
+/* Brand List */
+.brand-management ul { /* Corrected selector */
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--border-color); /* Add border around the list */
+  border-radius: var(--border-radius);
+  overflow: hidden; /* Ensure contained border radius */
+}
+
+/* Individual Brand Item */
+.brand-management li { /* Corrected selector */
+  display: flex;
+  justify-content: space-between; /* Push name and button apart */
+  align-items: center; /* Vertically center content */
+  padding: calc(var(--spacing-unit) * 0.8) var(--spacing-unit);
+  border-bottom: 1px solid var(--border-color); /* Separator line */
+  color: var(--medium-text);
+  font-size: 1rem;
+  transition: background-color 0.15s ease; /* Subtle hover transition */
+}
+
+/* Remove border from the last item */
+.brand-management li:last-child { /* Corrected selector */
+  border-bottom: none;
+}
+
+/* Optional: Hover effect for list items */
+.brand-management li:hover { /* Corrected selector */
+  background-color: var(--light-bg);
+}
+
+/* Brand Name (Implicitly the text node) - Give space to button */
+.brand-management li { /* Corrected selector */
+  /* Text node will naturally fill space; button has fixed size */
+}
+.brand-management li > span { /* Corrected selector - if you wrap the name in a span */
+    margin-right: var(--spacing-unit); /* Add space if needed */
+    word-break: break-word; /* Allow long names to wrap */
+}
+
+
+/* --- Button Styling --- */
+
+/* Base styles for all buttons on this page */
+.brand-management button { /* Corrected selector */
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  line-height: 1.5; /* Helps consistent height */
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.brand-management button:focus { /* Corrected selector */
+  outline: none;
+}
+.brand-management button:focus-visible { /* Corrected selector */
+  outline: none;
+  /* Focus shadow defined per button type below */
+}
+.brand-management button:active { /* Corrected selector */
+  transform: translateY(1px); /* Press effect */
+}
+
+/* "Thêm" (Add) Button */
+.brand-management form button[type="submit"] { /* Corrected selector */
+  background-color: var(--primary-color);
+  color: var(--white-bg);
+}
+
+.brand-management form button[type="submit"]:hover { /* Corrected selector */
+  background-color: #0056b3; /* Darker primary */
+}
+
+.brand-management form button[type="submit"]:active { /* Corrected selector */
+  background-color: #004085;
+}
+
+.brand-management form button[type="submit"]:focus-visible { /* Corrected selector */
+  box-shadow: 0 0 0 3px var(--primary-focus-shadow);
+}
+
+/* "Xóa" (Delete) Button */
+.brand-management li button { /* Corrected selector */
+  background-color: var(--danger-color);
+  color: var(--white-bg);
+  padding: 0.4rem 0.8rem; /* Make delete button slightly smaller */
+  font-size: 0.8rem;
+}
+
+.brand-management li button:hover { /* Corrected selector */
+  background-color: #c82333; /* Darker danger */
+}
+
+.brand-management li button:active { /* Corrected selector */
+  background-color: #bd2130;
+}
+
+.brand-management li button:focus-visible { /* Corrected selector */
+  box-shadow: 0 0 0 3px var(--danger-focus-shadow);
+}
+
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 500px) {
+  .brand-management { /* Corrected selector */
+    padding: var(--spacing-unit);
+    margin: var(--spacing-unit);
+  }
+
+  /* Stack form elements vertically */
+  .brand-management form { /* Corrected selector */
+    flex-direction: column;
+    align-items: stretch; /* Make input/button full width */
+  }
+
+  .brand-management input { /* Corrected selector */
+    margin-bottom: calc(var(--spacing-unit) * 0.75); /* Space between input/button when stacked */
+  }
+
+  .brand-management h2 { /* Corrected selector */
+    font-size: 1.4rem;
+  }
+
+  .brand-management li { /* Corrected selector */
+    padding: calc(var(--spacing-unit) * 0.6) calc(var(--spacing-unit) * 0.8); /* Slightly less padding */
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,14 @@
+/* global resets + theme */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+h1, h2, h3 { color: #4CAF50; }
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+a { color: #4CAF50; text-decoration: none; }
+a:hover { text-decoration: underline; }

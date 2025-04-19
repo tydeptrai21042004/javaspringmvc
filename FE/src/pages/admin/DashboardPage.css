@@ -1,0 +1,278 @@
+/* DashboardPage.css */
+
+/* Define color palette and spacing units */
+:root {
+  --primary-color: #007bff; /* Example primary color */
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545; /* Updated red */
+  --warning-color: #ffc107;
+  --light-bg: #f8f9fa;
+  --white-bg: #ffffff;
+  --dark-text: #212529;
+  --medium-text: #495057;
+  --light-text: #6c757d;
+  --border-color: #dee2e6;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  --border-radius: 0.375rem; /* ~6px */
+  --spacing-unit: 1rem;
+  --primary-focus-shadow: rgba(0, 123, 255, 0.35);
+  --danger-focus-shadow: rgba(220, 53, 69, 0.35);
+}
+
+/* General page styling */
+.dashboard-page {
+  padding: calc(var(--spacing-unit) * 1.5);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Modern font stack */
+  background-color: var(--white-bg); /* Cleaner background */
+  color: var(--dark-text);
+}
+
+/* Main Title */
+.dashboard-page h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--dark-text);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  padding-bottom: var(--spacing-unit);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Section Titles (Activity, User Management) */
+.dashboard-page h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--medium-text);
+  margin-top: calc(var(--spacing-unit) * 2.5); /* More space between sections */
+  margin-bottom: var(--spacing-unit);
+}
+
+/* Stats Cards Section */
+.stats-cards {
+  display: grid;
+  /* Responsive grid: fits as many cards > 180px as possible */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.card {
+  background: var(--white-bg); /* White background */
+  border: 1px solid var(--border-color); /* Subtle border */
+  border-radius: var(--border-radius);
+  padding: calc(var(--spacing-unit) * 1.25);
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.card:hover {
+  transform: translateY(-4px); /* Lift effect on hover */
+  box-shadow: var(--hover-shadow);
+}
+
+/* Card Titles (Users, Sales, Products) */
+.card h3 {
+  margin: 0 0 calc(var(--spacing-unit) / 2) 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--light-text); /* Lighter color for title */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Card Values */
+.card p {
+  font-size: 2rem; /* Larger value */
+  font-weight: 600; /* Bolder value */
+  margin: 0;
+  color: var(--dark-text);
+}
+
+/* Section containing chart heading and export button */
+.chart-header {
+  display: flex;
+  justify-content: space-between; /* Align heading left, button right */
+  align-items: center; /* Vertically align */
+  margin-bottom: var(--spacing-unit);
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: var(--spacing-unit);
+}
+
+/* Adjust chart heading margin since it's inside flex container now */
+.chart-header h3 {
+  margin-top: 0;
+  margin-bottom: 0; /* Reset margins */
+}
+
+/* Export Button */
+.export-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.export-btn:hover {
+  background-color: #0056b3; /* Darker primary */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.export-btn:active {
+  background-color: #004085;
+  transform: translateY(1px);
+}
+
+.export-btn:focus {
+  outline: none;
+}
+.export-btn:focus-visible { /* Accessible focus outline */
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-focus-shadow);
+}
+
+/* Chart Styling */
+.recharts-responsive-container {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  /* Optional: add visual container for the chart */
+  /* background-color: var(--light-bg); */
+  /* padding: var(--spacing-unit); */
+  /* border: 1px solid var(--border-color); */
+  /* border-radius: var(--border-radius); */
+}
+
+/* User Table Styling */
+/* Add a wrapper div around the table in your JSX for overflow control */
+.user-table-container {
+  overflow-x: auto; /* Enable horizontal scrolling on small screens */
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  margin-top: var(--spacing-unit);
+  background-color: var(--white-bg);
+}
+
+.user-table {
+  width: 100%;
+  min-width: 600px; /* Ensure table has minimum width for scrolling */
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.user-table th,
+.user-table td {
+  padding: calc(var(--spacing-unit) * 0.8); /* Adjust padding */
+  text-align: left;
+  border-bottom: 1px solid var(--border-color); /* Use bottom borders only */
+  vertical-align: middle; /* Align content vertically */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.user-table thead th {
+  background-color: var(--light-bg); /* Light header background */
+  color: var(--medium-text);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+  border-bottom-width: 2px; /* Thicker line below header */
+  border-top: none; /* Remove top border if any */
+}
+
+/* Remove bottom border from last row */
+.user-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Table Row Hover */
+.user-table tbody tr:hover {
+  background-color: #f1f3f5; /* Subtle hover effect */
+}
+
+/* Actions Column */
+.user-table td:last-child {
+  text-align: center; /* Center ban button */
+  width: 1%; /* Allow column to shrink to content size */
+  white-space: nowrap;
+}
+
+/* Ban Button */
+.ban-btn {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem; /* Slightly smaller */
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  line-height: 1.5; /* Ensure consistent height */
+}
+
+.ban-btn:hover {
+  background-color: #c82333; /* Darker danger */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ban-btn:active {
+  background-color: #bd2130;
+  transform: translateY(1px);
+}
+
+.ban-btn:focus {
+  outline: none;
+}
+.ban-btn:focus-visible { /* Accessible focus outline */
+  outline: none;
+  box-shadow: 0 0 0 3px var(--danger-focus-shadow);
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: var(--spacing-unit);
+  }
+
+  .dashboard-page h2 {
+    font-size: 1.6rem;
+  }
+
+  .dashboard-page h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Stack chart header items */
+  .chart-header {
+     flex-direction: column;
+     align-items: flex-start; /* Align items left */
+  }
+  .export-btn {
+     width: 100%; /* Make button full width */
+     text-align: center;
+  }
+
+  .card p {
+      font-size: 1.75rem; /* Slightly smaller value text on mobile */
+  }
+
+  /* Table container already handles horizontal scroll */
+}
+
+@media (max-width: 480px) {
+  /* Stack cards fully on very small screens */
+  .stats-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card p {
+      font-size: 1.6rem;
+  }
+}

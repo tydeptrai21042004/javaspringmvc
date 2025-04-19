@@ -1,0 +1,86 @@
+/* ExportPage.css */
+
+.export-page {
+  /* Existing styles */
+  padding: 2rem;
+  text-align: center;
+
+  /* --- Added Styles --- */
+  max-width: 600px; /* Constrain width for better readability on large screens */
+  margin: 3rem auto; /* Center the container vertically and horizontally */
+  background-color: #f8f9fa; /* Light background color for the container */
+  border: 1px solid #dee2e6; /* Subtle border */
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
+}
+
+.export-page h2 {
+  /* Existing styles */
+  margin-bottom: 1.5rem; /* Increased space below the heading */
+
+  /* --- Added Styles --- */
+  color: #343a40; /* Darker color for the heading */
+  font-size: 1.75rem; /* Slightly larger heading text */
+  font-weight: 600; /* Bolder heading */
+}
+
+.export-page button {
+  /* Existing styles */
+  padding: 0.75rem 1.5rem;
+  background: #28a745; /* Updated green color (similar to Bootstrap success) */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+
+  /* --- Added Styles --- */
+  font-size: 1rem; /* Explicitly set font size */
+  font-weight: 500; /* Slightly bolder button text */
+  cursor: pointer; /* Ensure pointer cursor on hover */
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out; /* Smooth transitions for hover/active states */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the button */
+}
+
+/* --- Added Hover State for Button --- */
+.export-page button:hover {
+  background-color: #218838; /* Darker green on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
+}
+
+/* --- Added Active (Pressed) State for Button --- */
+.export-page button:active {
+  background-color: #1e7e34; /* Even darker green when clicked */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Inset shadow for pressed effect */
+  transform: translateY(1px); /* Slight press down effect */
+}
+
+/* --- Added Focus State for Accessibility --- */
+.export-page button:focus {
+  outline: none; /* Remove default browser outline */
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.4); /* Custom focus ring using box-shadow, matching button color theme */
+}
+
+/* Consider using :focus-visible for modern browsers if you only want the focus ring for keyboard navigation */
+.export-page button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.4);
+}
+
+/* --- Optional: Style for disabled button (if you implement disabling logic in React) --- */
+/*
+.export-page button:disabled,
+.export-page button[disabled] {
+  background-color: #6c757d; // Grey background
+  color: #ced4da;
+  cursor: not-allowed; // Indicate non-interactive
+  box-shadow: none;
+  transform: none;
+  opacity: 0.65;
+}
+*/
+
+/* --- Optional: Add spacing if more elements are added later --- */
+/*
+.export-page > * + * {
+  margin-top: 1rem; // Add space between direct children of .export-page
+}
+*/
